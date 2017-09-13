@@ -1,0 +1,9 @@
+{
+  "name": "start",
+  "version": "0.1.0",
+  "dependencies": {
+    "Font-Awesome": "^4.3.0",
+    "jquery": "^2.2.3",
+    "normalize-css": "normalize.css#~4.1.1"
+  }
+}

@@ -1,0 +1,13 @@
+/*Colors*/
+$blue: #1a48a6;
+$red: #a71b3b;
+$yellow: #a6781a;
+$green: #1ba768;
+
+/*Sizes*/
+$font-size-base:25px;
+
+/*Wrappers*/
+$wrapper-width:1880px;
+$wrapper-padding:20px;
+$wrapper-margin:20px;
