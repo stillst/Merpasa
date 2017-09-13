@@ -1,0 +1,88 @@
+.main-nav{
+
+    /*Временно*/ border:1px solid #000;
+    /*Временно*/ width: 1920px;
+
+
+    ul{
+        font-size: 0;
+        padding: 0;
+
+        li{
+            display: inline-block;
+            vertical-align: top;
+            width: 20%;
+            /*Временно*/ border:1px solid #000;
+            /*Временно*/ min-height: 970px;
+            font-size: 15px;
+        }
+    }
+}
+
+.nav-item{
+
+    &__front{
+        /*Временно*/ min-height: 970px;
+        width: 100%;
+        background-size: cover;
+    }
+
+    .nav-item__back{
+        /*Временно*/ min-height: 970px;
+        width: 100%;
+        padding-top: 210px;
+        padding-left: 55px;
+        background-color: #666666;
+
+    }
+
+    &--packequip{
+        .nav-item__front{
+            background-image: url("../img/packequip.jpg");
+        }
+    }
+
+    &--packematerial{
+        .nav-item__front{
+            background-image: url("../img/packematerial.jpg");
+        }
+    }
+
+    &--autoequip{
+        .nav-item__front{
+            background-image: url("../img/autoequip.jpg");
+        }
+    }
+
+    &--technoequip{
+        .nav-item__front{
+            background-image: url("../img/technoequip.jpg");
+        }
+    }
+
+     &--technoserv{
+        .nav-item__front{
+            background-image: url("../img/technoserv.jpg");
+        }
+    }
+
+
+/**/
+    &__link{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 45px;
+        margin: auto;
+        z-index: 99999999999999;
+        text-decoration: none;
+        width: 90%;
+        font-size: 27px;
+        padding: 1em;
+        background-color: red;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+
+}
