@@ -1,38 +1,98 @@
 .main-nav{
+    font-size: 0;
 
-    /*Временно*/ border:1px solid #000;
-    /*Временно*/ width: 1920px;
+    &__item{
+        perspective: 800px;
+        display: inline-block;
+        vertical-align: top;
+        width: 20%;
+    }
+
+    &__link{
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        top: 45px;
+        margin: auto;
+        text-decoration: none;
+        width: 90%;
+        font-size: 27px;
+        padding: 1em;
+        background-color: green;
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
 
 
-    ul{
-        font-size: 0;
-        padding: 0;
 
-        li{
-            display: inline-block;
-            vertical-align: top;
-            width: 20%;
-            /*Временно*/ border:1px solid #000;
-            /*Временно*/ min-height: 970px;
-            font-size: 15px;
+.techn {
+    /*временно*/ min-height: 600px;
+    width: 20vw;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    transition: transform .9s;
+    /*animation: rotate 10s linear infinite;*/
+
+    &__side {
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 20vw;
+
+        &--front {
+            background: gold;
+            backface-visibility: hidden;
         }
+
+        &--right {
+            transform: translateX(10vw) translateZ(-10vw) rotateY(90deg);
+            background: red;
+        }
+
+    }
+
+
+    &:hover{
+        transform: translateX(-10vw) translateZ(-10vw) rotateY(-90deg) ;
     }
 }
 
 .nav-item{
 
-    &__front{
-        /*Временно*/ min-height: 970px;
-        width: 100%;
-        background-size: cover;
+    transform-style: preserve-3d;
+    position: relative;
+    transition: transform .9s;
+
+    &:hover{
+        transform: rotateY(-90deg);
     }
 
-    .nav-item__back{
+
+    &__front{
+        /*Временно*/ min-height: 970px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background-size: cover;
+        transform: translateZ(10vw);
+    }
+
+    &__right{
         /*Временно*/ min-height: 970px;
         width: 100%;
+        left: 0;
+        top: 0;
+        position: absolute;
         padding-top: 210px;
         padding-left: 55px;
         background-color: #666666;
+        transform: translateX(10vw) rotateY(90deg);
 
     }
 
@@ -68,21 +128,6 @@
 
 
 /**/
-    &__link{
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 45px;
-        margin: auto;
-        z-index: 99999999999999;
-        text-decoration: none;
-        width: 90%;
-        font-size: 27px;
-        padding: 1em;
-        background-color: red;
-        text-align: center;
-        text-transform: uppercase;
-    }
 
 
 }
