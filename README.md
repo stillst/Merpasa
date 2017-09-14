@@ -1,4 +1,4 @@
-﻿[Merpasa](http://stillst.github.io/epixx-test/src/)
+﻿[Merpasa](https://stillst.github.io/Merpasa/src/)
 =====================================================================
 
 > Тестовое задание для Astra Media Group.

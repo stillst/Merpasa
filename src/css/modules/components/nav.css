@@ -6,6 +6,8 @@
         display: inline-block;
         vertical-align: top;
         width: 20%;
+
+        transition:all 2s;
     }
 
     &__link{
