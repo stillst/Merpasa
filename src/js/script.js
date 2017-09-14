@@ -24,23 +24,11 @@ switch(url) {
     break
 
     case "packequip":
-        console.log("packequip-");
-    break
-
     case "packematerial":
-        console.log("packematerial-");
-    break
-
     case "autoequip":
-        console.log("autoequip-");
-    break
-
     case "technoequip":
-        console.log("technoequip-");
-    break
-
     case "technoserv":
-    console.log("technoserv-");
+        delAllNavButThis(url);
     break
 
     default:
@@ -85,8 +73,6 @@ for (var i = 0; i < links.length; i++) {
 function mainNavLinkClick(e){
     e.preventDefault();
     identifyClassName(this.parentNode.className);
-
-
 }
 
 
@@ -100,31 +86,31 @@ function identifyClassName(classes){
     if (classes.indexOf("packequip") !== -1){
         mainlink = "packequip";
         changeUrl(mainlink);
-        changeDOM(mainlink);
+        delAllNavButThis(mainlink);
     }
 
     if (classes.indexOf("packematerial") !== -1){
         mainlink = "packematerial";
         changeUrl(mainlink);
-        changeDOM(mainlink);
+        delAllNavButThis(mainlink);
     }
 
     if (classes.indexOf("autoequip") !== -1){
         mainlink = "autoequip";
         changeUrl(mainlink);
-        changeDOM(mainlink);
+        delAllNavButThis(mainlink);
     }
 
     if (classes.indexOf("technoequip") !== -1){
         mainlink = "technoequip";
         changeUrl(mainlink);
-        changeDOM(mainlink);
+        delAllNavButThis(mainlink);
     }
 
     if (classes.indexOf("technoserv") !== -1){
         mainlink = "technoserv";
         changeUrl(mainlink);
-        changeDOM(mainlink);
+        delAllNavButThis(mainlink);
     }
 
 }
@@ -135,21 +121,16 @@ function changeUrl(mainlink){
 }
 
 
-function changeDOM(mainlink){
+function delAllNavButThis(mainlink){
     var navs = document.getElementsByClassName("main-nav__item");
 
     var navsLength = navs.length;
     for (var i = navsLength; i--;) {
 
         if (navs[i].className.indexOf(mainlink) == -1){
-            cutDOMElement(navs[i]);
+            navs[i].parentNode.removeChild(navs[i]);
         }
     }
-}
-
-function cutDOMElement(elem){
-
-    elem.parentNode.removeChild(elem);
 }
 
 
