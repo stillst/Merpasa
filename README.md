@@ -1,4 +1,4 @@
-﻿[Merpasa](https://stillst.github.io/Merpasa/src/)
+﻿[Merpasa](https://stillst.github.io/Merpasa/dist/)
 =====================================================================
 
 > Тестовое задание для Astra Media Group.
