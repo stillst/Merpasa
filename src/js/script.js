@@ -1,3 +1,6 @@
+(function() {
+
+
 //Copy nav-items
 var navItems = [];
 var navItemsDom = document.getElementsByClassName("main-nav__link");
@@ -8,19 +11,26 @@ for (var i = 0; i < navItemsDom.length; i++) {
 }
 
 
+//Set Color
+var color = localStorage.getItem("color");
+
+
+if (color != null){
+
+    printColor(color);
+}
+
+
 //Routing
-
 var url = window.location.pathname;
-
 url = url.substring(url.lastIndexOf("/")+1);
-
 
 switch(url) {
 
     case "/":
     case "//":
     case "":
-        console.log("main");
+
     break
 
     case "packequip":
@@ -32,37 +42,12 @@ switch(url) {
     break
 
     default:
-        console.log(404);
+
     break
 }
 
 
-
-
-
-//Ajax
-/*
-var xhr = new XMLHttpRequest();
-
-// 2. Конфигурируем его: GET-запрос на URL 'phones.json'
-xhr.open('GET', 'phones.json', false);
-
-// 3. Отсылаем запрос
-xhr.send();
-
-// 4. Если код ответа сервера не 200, то это ошибка
-if (xhr.status != 200) {
-  // обработать ошибку
-  alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
-} else {
-  // вывести результат
-  console.log( xhr.responseText ); // responseText -- текст ответа.
-}
-*/
-
-
-
-
+//Link Click
 var links = document.getElementsByClassName("main-nav__link");
 
 for (var i = 0; i < links.length; i++) {
@@ -74,9 +59,6 @@ function mainNavLinkClick(e){
     e.preventDefault();
     identifyClassName(this.parentNode.className);
 }
-
-
-
 
 
 function identifyClassName(classes){
@@ -117,7 +99,7 @@ function identifyClassName(classes){
 
 
 function changeUrl(mainlink){
-    history.replaceState(null, "",  mainlink);
+    history.pushState(null, "",  mainlink);
 }
 
 
@@ -134,7 +116,76 @@ function delAllNavButThis(mainlink){
 }
 
 
+//Colors
 
+
+
+var logo = document.getElementById("logo__link");
+logo.addEventListener( "mouseover" , changeColor);
+
+
+function changeColor(){
+    var blue = "rgba(26, 72, 166, 0.9)";  //"#1a48a6";
+    var red =  "rgba(167, 27, 59, 0.9)"; //  "#a71b3b";
+    var yellow = "rgba(166, 120, 26, 0.9)"; //"#a6781a";
+    var green = "rgba(27, 167, 104, 0.9)"; //"#1ba768";
+
+    var savedColor = localStorage.getItem("color");
+    var color = "";
+
+
+    do {
+        var rand = Math.floor(Math.random() * 4) + 1;
+
+        switch(rand)
+        {
+
+            case 1:
+                color = blue;
+            break;
+
+            case 2:
+                color = red;
+            break;
+
+            case 3:
+                color = yellow;
+            break;
+
+            case 4:
+                color = green;
+            break;
+
+        }
+
+    } while (savedColor == color)
+
+    localStorage.setItem("color", color);
+    printColor(color);
+
+}
+
+function printColor(color){
+
+
+
+    var footer = document.getElementById("footer");
+    footer.style.backgroundColor = color;
+
+    var mainNavLinks = document.getElementsByClassName("main-nav__link");
+    j = 0.9;
+
+    for(var i = 0; i < mainNavLinks.length; i++){
+
+        var newColor = color.substring(0, color.lastIndexOf(",")+1);
+        newColor = newColor +" "+ j + ")";
+
+        mainNavLinks[i].style.backgroundColor = newColor;
+        j = j - 0.1;
+    }
+
+    j = 0.9;
+}
 /*
 
  var mainNav = document.getElementsByClassName("main-nav");
@@ -144,3 +195,5 @@ function delAllNavButThis(mainlink){
 
     }
 */
+
+})();

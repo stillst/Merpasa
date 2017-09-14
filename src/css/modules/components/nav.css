@@ -10,6 +10,7 @@
         transition:all 2s;
     }
 
+
     &__link{
         position: absolute;
         left: 0;
@@ -21,9 +22,10 @@
         width: 90%;
         font-size: 27px;
         padding: 1em;
-        background-color: green;
+        background-color: $blue;
         text-align: center;
         text-transform: uppercase;
+        color: #fff;
     }
 }
 
@@ -128,8 +130,6 @@
         }
     }
 
-
-/**/
 
 
 }
