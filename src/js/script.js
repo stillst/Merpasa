@@ -12,7 +12,9 @@ for (var i = 0; i < navItemsDom.length; i++) {
 
 var url = window.location.pathname;
 
-console.log(url);
+url = url.substring(url.lastIndexOf("/")+1);
+
+
 switch(url) {
 
     case "/":
