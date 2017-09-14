@@ -1,8 +1,53 @@
+//Copy nav-items
+var navItems = [];
+var navItemsDom = document.getElementsByClassName("main-nav__link");
+
+for (var i = 0; i < navItemsDom.length; i++) {
+    var navItem = navItemsDom[i].cloneNode(true);
+    navItems.push(navItem);
+}
+
+
 //Routing
 
-var currentPath = window.location;
+var url = window.location.pathname;
 
-console.log(currentPath);
+console.log(url);
+switch(url) {
+
+    case "/":
+    case "//":
+    case "":
+        console.log("main");
+    break
+
+    case "packequip":
+        console.log("packequip-");
+    break
+
+    case "packematerial":
+        console.log("packematerial-");
+    break
+
+    case "autoequip":
+        console.log("autoequip-");
+    break
+
+    case "technoequip":
+        console.log("technoequip-");
+    break
+
+    case "technoserv":
+    console.log("technoserv-");
+    break
+
+    default:
+        console.log(404);
+    break
+}
+
+
+
 
 
 //Ajax
@@ -50,7 +95,6 @@ function identifyClassName(classes){
 
     var mainlink = "";
 
-
     if (classes.indexOf("packequip") !== -1){
         mainlink = "packequip";
         changeUrl(mainlink);
@@ -80,7 +124,7 @@ function identifyClassName(classes){
         changeUrl(mainlink);
         changeDOM(mainlink);
     }
-    console.log(currentPath);
+
 }
 
 
@@ -96,22 +140,14 @@ function changeDOM(mainlink){
     for (var i = navsLength; i--;) {
 
         if (navs[i].className.indexOf(mainlink) == -1){
-            cutDOMElements(navs[i]);
+            cutDOMElement(navs[i]);
         }
     }
 }
 
-function cutDOMElements(elem){
-    var navItems = [];
-    var navItem = elem.cloneNode(true);
-    navItems.push(navItem);
-
+function cutDOMElement(elem){
 
     elem.parentNode.removeChild(elem);
-    console.log(navItems);
-
-
-
 }
 
 
