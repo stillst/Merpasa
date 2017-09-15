@@ -47,6 +47,7 @@ function Routing(){
         case "autoequip":
         case "technoequip":
         case "technoserv":
+            console.log("sideEnter");
             delAllNavButThis(url);
         break
 
@@ -110,9 +111,10 @@ function refreshPage(e){
 
 
 function addContent(){
+    console.log("addCont");
     var content = document.getElementById("content");
     if (content == null){
-
+        console.log("addCont inside null")
         var content = document.createElement("div");
         content.classList.add("content");
         content.id = "content";
@@ -187,7 +189,7 @@ function changeUrl(mainlink){
 
 function delAllNavButThis(mainlink){
     var navs = document.getElementsByClassName("main-nav__item");
-
+    console.log("deletion")
     var navsLength = navs.length;
     for (var i = navsLength; i--;) {
 
