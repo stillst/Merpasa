@@ -155,7 +155,6 @@ function changePageStruct(classes){
 
 
 function changeUrl(mainlink){
-    history.replaceState(null, "",  "/");
     history.pushState(null, "",  mainlink);
 }
 
