@@ -1,0 +1,19 @@
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+    .techn__side--front{
+        backface-visibility: hidden;
+    }
+
+    .techn__side--right{
+        transform:  rotateY(180deg);
+        backface-visibility: visible;
+    }
+
+    .techn:hover {
+        transform: rotateY(180deg);
+        .techn__side--right{
+            z-index: 2;
+        }
+    }
+
+}

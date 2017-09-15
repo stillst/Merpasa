@@ -17,6 +17,8 @@
 }
 
 
+
+
 @media (max-width: 1700px)
 {
     .main-nav__link{
@@ -27,6 +29,8 @@
     .techn__side--right ul li {
         margin-bottom: 10px;
     }
+
+
 }
 
 @media (max-width: 1500px)
@@ -70,9 +74,6 @@
     }
 
 
-
-
-
     .footer{
         min-height: 0px;
         padding: 5px 0;
@@ -97,12 +98,24 @@
     }
 }
 
+
 @media (max-width: 1150px)
 {
-
     .techn__side--right ul li {
         font-size: 10px;
         margin-bottom: 4px;
     }
-
 }
+
+
+
+/*
+@media (max-width: 1150px)
+{
+    .techn__side--right ul li {
+        font-size: 10px;
+        margin-bottom: 4px;
+    }
+}
+
+*/

@@ -54,9 +54,7 @@ function Routing(){
             console.log("404");
         break
     }
-
 }
-
 
 
 //Links Click
@@ -78,12 +76,16 @@ function refreshPage(e){
     var baseurl = "dist";
     var url = window.location.pathname;
     url = url.substring(url.lastIndexOf("/")+1);
-    console.log("refresh " + url);
-    if (baseurl != url || baseurl != ""){
+
+
+
+    if (baseurl != url && url != ""){
+        console.log("refresh " + url);
+        console.log("Зашли снова");
+
+
         changeUrl(baseurl);
     }
-    /*https://stillst.github.io/Merpasa/dist/*/
-
 
 
     navItemsDom = document.getElementsByClassName("main-nav__item");
@@ -92,7 +94,7 @@ function refreshPage(e){
     var navItemsDomLength = navItemsDom.length;
 
     if (navItemsDomLength < 5){
-
+        delContent();
         for (var i = navItemsDomLength; i--;) {
             navItemsDom[i].parentNode.removeChild(navItemsDom[i]);
         }
@@ -102,14 +104,37 @@ function refreshPage(e){
         }
 
         SetColor();
-
         addNavEvents();
     }
-
 }
 
 
+function addContent(){
+    var content = document.getElementById("content");
+    if (content == null){
 
+        var content = document.createElement("div");
+        content.classList.add("content");
+        content.id = "content";
+        var title = document.createElement("h1");
+        title.innerHTML = "Заголовок";
+        content.appendChild(title);
+
+        var text = document.createElement("p");
+        text.innerHTML = "Какой-то текст";
+        content.appendChild(text);
+
+        var mainNav = document.getElementById("main-nav");
+        mainNav.appendChild(content);
+    }
+}
+
+function delContent(){
+    var content = document.getElementById("content");
+    if (content != null){
+       content.parentNode.removeChild(content);
+    }
+}
 
 
 function mainNavLinkClick(e){
@@ -170,6 +195,8 @@ function delAllNavButThis(mainlink){
             navs[i].parentNode.removeChild(navs[i]);
         }
     }
+
+    addContent();
 }
 
 
@@ -225,20 +252,17 @@ function printColor(color){
     footer.style.backgroundColor = color;
 
     var mainNavLinks = document.getElementsByClassName("main-nav__link");
-    j = 0.9;
+    opacity = 0.9;
 
     for(var i = 0; i < mainNavLinks.length; i++){
 
         var newColor = color.substring(0, color.lastIndexOf(",")+1);
-        newColor = newColor +" "+ j + ")";
+        newColor = newColor + " "+ opacity + ")";
 
         mainNavLinks[i].style.backgroundColor = newColor;
-        j = j - 0.1;
+        opacity = opacity - 0.1;
     }
 
-    j = 0.9;
+    opacity = 0.9;
 }
-
-
-
 })();
