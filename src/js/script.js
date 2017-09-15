@@ -32,7 +32,6 @@ Routing();
 function Routing(){
     var url = window.location.pathname;
     url = url.substring(url.lastIndexOf("/")+1);
-    console.log(url);
 
     switch(url) {
 
@@ -74,9 +73,17 @@ function refreshPage(e){
     if (e != null){
         e.preventDefault();
     }
+
+    var baseurl = "Merpasa/dist/";
+    var url = window.location.pathname;
+    url = url.substring(url.lastIndexOf("/")+1);
+
+    if (baseurl != url){
+        changeUrl(baseurl);
+    }
     /*https://stillst.github.io/Merpasa/dist/*/
 
-    /*changeUrl("/");*/
+
 
     navItemsDom = document.getElementsByClassName("main-nav__item");
     var mainNav = document.getElementById("main-nav");
@@ -148,7 +155,7 @@ function changePageStruct(classes){
 
 
 function changeUrl(mainlink){
-
+    history.replaceState(null, "",  "/");
     history.pushState(null, "",  mainlink);
 }
 
