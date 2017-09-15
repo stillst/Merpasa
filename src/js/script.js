@@ -32,6 +32,7 @@ Routing();
 function Routing(){
     var url = window.location.pathname;
     url = url.substring(url.lastIndexOf("/")+1);
+    console.log(url);
 
     switch(url) {
 
@@ -73,7 +74,7 @@ function refreshPage(e){
     if (e != null){
         e.preventDefault();
     }
-
+    /*https://stillst.github.io/Merpasa/dist/*/
 
     changeUrl("/");
 
