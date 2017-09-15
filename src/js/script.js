@@ -47,7 +47,6 @@ function Routing(){
         case "autoequip":
         case "technoequip":
         case "technoserv":
-            console.log("sideEnter");
             delAllNavButThis(url);
         break
 
@@ -78,12 +77,7 @@ function refreshPage(e){
     var url = window.location.pathname;
     url = url.substring(url.lastIndexOf("/")+1);
 
-
-
     if (baseurl != url && url != ""){
-        console.log("refresh " + url);
-        console.log("Зашли снова");
-
 
         changeUrl("/Merpasa/dist/");
     }
@@ -111,10 +105,10 @@ function refreshPage(e){
 
 
 function addContent(){
-    console.log("addCont");
+
     var content = document.getElementById("content");
     if (content == null){
-        console.log("addCont inside null")
+
         var content = document.createElement("div");
         content.classList.add("content");
         content.id = "content";
@@ -189,7 +183,7 @@ function changeUrl(mainlink){
 
 function delAllNavButThis(mainlink){
     var navs = document.getElementsByClassName("main-nav__item");
-    console.log("deletion")
+
     var navsLength = navs.length;
     for (var i = navsLength; i--;) {
 
