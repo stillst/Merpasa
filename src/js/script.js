@@ -51,7 +51,7 @@ function Routing(){
         break
 
         default:
-            console.log("404");
+
         break
     }
 }
@@ -84,7 +84,7 @@ function refreshPage(e){
         console.log("Зашли снова");
 
 
-        changeUrl(baseurl);
+        changeUrl("/");
     }
 
 
