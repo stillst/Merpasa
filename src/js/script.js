@@ -50,7 +50,7 @@ function Routing(){
         break
 
         default:
-
+            console.log("404");
         break
     }
 
@@ -78,7 +78,7 @@ function refreshPage(e){
     var url = window.location.pathname;
     url = url.substring(url.lastIndexOf("/")+1);
     console.log("refresh " + url);
-    if (baseurl != url){
+    if (baseurl != url || baseurl != ""){
         changeUrl(baseurl);
     }
     /*https://stillst.github.io/Merpasa/dist/*/
