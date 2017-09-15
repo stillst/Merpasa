@@ -1,67 +1,115 @@
 (function() {
 
+window.addEventListener('popstate', function(e){
+    Routing();
+}, false);
+
+
+addNavEvents();
 
 //Copy nav-items
 var navItems = [];
-var navItemsDom = document.getElementsByClassName("main-nav__link");
+var navItemsDom = document.getElementsByClassName("main-nav__item");
 
 for (var i = 0; i < navItemsDom.length; i++) {
     var navItem = navItemsDom[i].cloneNode(true);
     navItems.push(navItem);
 }
 
+SetColor();
 
 //Set Color
-var color = localStorage.getItem("color");
+function SetColor(){
+    var color = localStorage.getItem("color");
+    if (color != null){
+        printColor(color);
+    }
+}
+
+Routing();
 
 
-if (color != null){
+function Routing(){
+    var url = window.location.pathname;
+    url = url.substring(url.lastIndexOf("/")+1);
 
-    printColor(color);
+    switch(url) {
+
+        case "/":
+        case "//":
+        case "":
+            refreshPage();
+        break
+
+        case "packequip":
+        case "packematerial":
+        case "autoequip":
+        case "technoequip":
+        case "technoserv":
+            delAllNavButThis(url);
+        break
+
+        default:
+
+        break
+    }
+
 }
 
 
-//Routing
-var url = window.location.pathname;
-url = url.substring(url.lastIndexOf("/")+1);
 
-switch(url) {
+//Links Click
+function addNavEvents(){
+    var links = document.getElementsByClassName("main-nav__link");
 
-    case "/":
-    case "//":
-    case "":
-
-    break
-
-    case "packequip":
-    case "packematerial":
-    case "autoequip":
-    case "technoequip":
-    case "technoserv":
-        delAllNavButThis(url);
-    break
-
-    default:
-
-    break
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener("click" , mainNavLinkClick);
+    }
 }
 
 
-//Link Click
-var links = document.getElementsByClassName("main-nav__link");
+function refreshPage(e){
 
-for (var i = 0; i < links.length; i++) {
-    links[i].addEventListener( "click" , mainNavLinkClick);
+    if (e != null){
+        e.preventDefault();
+    }
+
+
+    changeUrl("/");
+
+    navItemsDom = document.getElementsByClassName("main-nav__item");
+    var mainNav = document.getElementById("main-nav");
+
+    var navItemsDomLength = navItemsDom.length;
+
+    if (navItemsDomLength < 5){
+
+        for (var i = navItemsDomLength; i--;) {
+            navItemsDom[i].parentNode.removeChild(navItemsDom[i]);
+        }
+
+        for (var i = 0; i < navItems.length; i++) {
+            mainNav.appendChild(navItems[i]);
+        }
+
+        SetColor();
+
+        addNavEvents();
+    }
+
 }
+
+
+
 
 
 function mainNavLinkClick(e){
     e.preventDefault();
-    identifyClassName(this.parentNode.className);
+    changePageStruct(this.parentNode.className);
 }
 
 
-function identifyClassName(classes){
+function changePageStruct(classes){
 
     var mainlink = "";
 
@@ -99,6 +147,7 @@ function identifyClassName(classes){
 
 
 function changeUrl(mainlink){
+
     history.pushState(null, "",  mainlink);
 }
 
@@ -117,12 +166,9 @@ function delAllNavButThis(mainlink){
 
 
 //Colors
-
-
-
 var logo = document.getElementById("logo__link");
-logo.addEventListener( "mouseover" , changeColor);
-
+logo.addEventListener("mouseover" , changeColor);
+logo.addEventListener("click" , refreshPage);
 
 function changeColor(){
     var blue = "rgba(26, 72, 166, 0.9)";  //"#1a48a6";
@@ -167,8 +213,6 @@ function changeColor(){
 
 function printColor(color){
 
-
-
     var footer = document.getElementById("footer");
     footer.style.backgroundColor = color;
 
@@ -186,14 +230,7 @@ function printColor(color){
 
     j = 0.9;
 }
-/*
 
- var mainNav = document.getElementsByClassName("main-nav");
 
-    for (var i = 0; i < navItems.length; i++) {
-        mainNav[0].appendChild(navItems[i]);
-
-    }
-*/
 
 })();
