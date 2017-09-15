@@ -84,7 +84,7 @@ function refreshPage(e){
         console.log("Зашли снова");
 
 
-        changeUrl("/dist");
+        changeUrl("/Merpasa");
     }
 
 
