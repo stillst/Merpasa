@@ -1,1 +1,243 @@
-!function(){function e(){var e=localStorage.getItem("color");null!=e&&s(e)}function a(){var e=window.location.pathname;switch(e=e.substring(e.lastIndexOf("/")+1)){case"/":case"//":case"":t();break;case"packequip":case"packematerial":case"autoequip":case"technoequip":case"technoserv":c(e)}}function n(){for(var e=document.getElementsByClassName("main-nav__link"),a=0;a<e.length;a++)e[a].addEventListener("click",o)}function t(a){null!=a&&a.preventDefault();var t="Merpasa/dist/",o=window.location.pathname;o=o.substring(o.lastIndexOf("/")+1),t!=o&&i(t),d=document.getElementsByClassName("main-nav__item");var r=document.getElementById("main-nav"),c=d.length;if(c<5){for(var l=c;l--;)d[l].parentNode.removeChild(d[l]);for(var l=0;l<u.length;l++)r.appendChild(u[l]);e(),n()}}function o(e){e.preventDefault(),r(this.parentNode.className)}function r(e){var a="";e.indexOf("packequip")!==-1&&(a="packequip",i(a),c(a)),e.indexOf("packematerial")!==-1&&(a="packematerial",i(a),c(a)),e.indexOf("autoequip")!==-1&&(a="autoequip",i(a),c(a)),e.indexOf("technoequip")!==-1&&(a="technoequip",i(a),c(a)),e.indexOf("technoserv")!==-1&&(a="technoserv",i(a),c(a))}function i(e){history.pushState(null,"",e)}function c(e){for(var a=document.getElementsByClassName("main-nav__item"),n=a.length,t=n;t--;)a[t].className.indexOf(e)==-1&&a[t].parentNode.removeChild(a[t])}function l(){var e="rgba(26, 72, 166, 0.9)",a="rgba(167, 27, 59, 0.9)",n="rgba(166, 120, 26, 0.9)",t="rgba(27, 167, 104, 0.9)",o=localStorage.getItem("color"),r="";do{var i=Math.floor(4*Math.random())+1;switch(i){case 1:r=e;break;case 2:r=a;break;case 3:r=n;break;case 4:r=t}}while(o==r);localStorage.setItem("color",r),s(r)}function s(e){var a=document.getElementById("footer");a.style.backgroundColor=e;var n=document.getElementsByClassName("main-nav__link");j=.9;for(var t=0;t<n.length;t++){var o=e.substring(0,e.lastIndexOf(",")+1);o=o+" "+j+")",n[t].style.backgroundColor=o,j-=.1}j=.9}window.addEventListener("popstate",function(e){a()},!1),n();for(var u=[],d=document.getElementsByClassName("main-nav__item"),m=0;m<d.length;m++){var v=d[m].cloneNode(!0);u.push(v)}e(),a();var f=document.getElementById("logo__link");f.addEventListener("mouseover",l),f.addEventListener("click",t)}();
+(function() {
+
+window.addEventListener('popstate', function(e){
+    Routing();
+}, false);
+
+
+addNavEvents();
+
+//Copy nav-items
+var navItems = [];
+var navItemsDom = document.getElementsByClassName("main-nav__item");
+
+for (var i = 0; i < navItemsDom.length; i++) {
+    var navItem = navItemsDom[i].cloneNode(true);
+    navItems.push(navItem);
+}
+
+SetColor();
+
+//Set Color
+function SetColor(){
+    var color = localStorage.getItem("color");
+    if (color != null){
+        printColor(color);
+    }
+}
+
+Routing();
+
+
+function Routing(){
+    var url = window.location.pathname;
+    url = url.substring(url.lastIndexOf("/")+1);
+
+    switch(url) {
+
+        case "/":
+        case "//":
+        case "":
+            refreshPage();
+        break
+
+        case "packequip":
+        case "packematerial":
+        case "autoequip":
+        case "technoequip":
+        case "technoserv":
+            delAllNavButThis(url);
+        break
+
+        default:
+
+        break
+    }
+
+}
+
+
+
+//Links Click
+function addNavEvents(){
+    var links = document.getElementsByClassName("main-nav__link");
+
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener("click" , mainNavLinkClick);
+    }
+}
+
+
+function refreshPage(e){
+
+    if (e != null){
+        e.preventDefault();
+    }
+
+    var baseurl = "Merpasa/dist";
+    var url = window.location.pathname;
+    url = url.substring(url.lastIndexOf("/")+1);
+    console.log("refresh " + url);
+    if (baseurl != url){
+        changeUrl(baseurl);
+    }
+    /*https://stillst.github.io/Merpasa/dist/*/
+
+
+
+    navItemsDom = document.getElementsByClassName("main-nav__item");
+    var mainNav = document.getElementById("main-nav");
+
+    var navItemsDomLength = navItemsDom.length;
+
+    if (navItemsDomLength < 5){
+
+        for (var i = navItemsDomLength; i--;) {
+            navItemsDom[i].parentNode.removeChild(navItemsDom[i]);
+        }
+
+        for (var i = 0; i < navItems.length; i++) {
+            mainNav.appendChild(navItems[i]);
+        }
+
+        SetColor();
+
+        addNavEvents();
+    }
+
+}
+
+
+
+
+
+function mainNavLinkClick(e){
+    e.preventDefault();
+    changePageStruct(this.parentNode.className);
+}
+
+
+function changePageStruct(classes){
+
+    var mainlink = "";
+
+    if (classes.indexOf("packequip") !== -1){
+        mainlink = "packequip";
+        changeUrl(mainlink);
+        delAllNavButThis(mainlink);
+    }
+
+    if (classes.indexOf("packematerial") !== -1){
+        mainlink = "packematerial";
+        changeUrl(mainlink);
+        delAllNavButThis(mainlink);
+    }
+
+    if (classes.indexOf("autoequip") !== -1){
+        mainlink = "autoequip";
+        changeUrl(mainlink);
+        delAllNavButThis(mainlink);
+    }
+
+    if (classes.indexOf("technoequip") !== -1){
+        mainlink = "technoequip";
+        changeUrl(mainlink);
+        delAllNavButThis(mainlink);
+    }
+
+    if (classes.indexOf("technoserv") !== -1){
+        mainlink = "technoserv";
+        changeUrl(mainlink);
+        delAllNavButThis(mainlink);
+    }
+
+}
+
+
+function changeUrl(mainlink){
+    history.pushState(null, "",  mainlink);
+}
+
+
+function delAllNavButThis(mainlink){
+    var navs = document.getElementsByClassName("main-nav__item");
+
+    var navsLength = navs.length;
+    for (var i = navsLength; i--;) {
+
+        if (navs[i].className.indexOf(mainlink) == -1){
+            navs[i].parentNode.removeChild(navs[i]);
+        }
+    }
+}
+
+
+//Colors
+var logo = document.getElementById("logo__link");
+logo.addEventListener("mouseover" , changeColor);
+logo.addEventListener("click" , refreshPage);
+
+function changeColor(){
+    var blue = "rgba(26, 72, 166, 0.9)";  //"#1a48a6";
+    var red =  "rgba(167, 27, 59, 0.9)"; //  "#a71b3b";
+    var yellow = "rgba(166, 120, 26, 0.9)"; //"#a6781a";
+    var green = "rgba(27, 167, 104, 0.9)"; //"#1ba768";
+
+    var savedColor = localStorage.getItem("color");
+    var color = "";
+
+
+    do {
+        var rand = Math.floor(Math.random() * 4) + 1;
+
+        switch(rand)
+        {
+
+            case 1:
+                color = blue;
+            break;
+
+            case 2:
+                color = red;
+            break;
+
+            case 3:
+                color = yellow;
+            break;
+
+            case 4:
+                color = green;
+            break;
+
+        }
+
+    } while (savedColor == color)
+
+    localStorage.setItem("color", color);
+    printColor(color);
+
+}
+
+function printColor(color){
+
+    var footer = document.getElementById("footer");
+    footer.style.backgroundColor = color;
+
+    var mainNavLinks = document.getElementsByClassName("main-nav__link");
+    j = 0.9;
+
+    for(var i = 0; i < mainNavLinks.length; i++){
+
+        var newColor = color.substring(0, color.lastIndexOf(",")+1);
+        newColor = newColor +" "+ j + ")";
+
+        mainNavLinks[i].style.backgroundColor = newColor;
+        j = j - 0.1;
+    }
+
+    j = 0.9;
+}
+
+
+
+})();

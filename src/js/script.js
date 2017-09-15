@@ -74,10 +74,10 @@ function refreshPage(e){
         e.preventDefault();
     }
 
-    var baseurl = "Merpasa/dist/";
+    var baseurl = "Merpasa/dist";
     var url = window.location.pathname;
     url = url.substring(url.lastIndexOf("/")+1);
-
+    console.log("refresh " + url);
     if (baseurl != url){
         changeUrl(baseurl);
     }
