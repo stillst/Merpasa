@@ -76,7 +76,7 @@ function refreshPage(e){
     }
     /*https://stillst.github.io/Merpasa/dist/*/
 
-    changeUrl("/");
+    /*changeUrl("/");*/
 
     navItemsDom = document.getElementsByClassName("main-nav__item");
     var mainNav = document.getElementById("main-nav");
