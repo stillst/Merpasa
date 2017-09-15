@@ -38,6 +38,7 @@ function Routing(){
         case "/":
         case "//":
         case "":
+        case "dist":
             refreshPage();
         break
 

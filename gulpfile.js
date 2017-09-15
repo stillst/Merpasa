@@ -17,7 +17,8 @@ var gulp = require('gulp'),
     cssnano = require('cssnano'),
     autoprefixer = require('autoprefixer'),
     fileinclude = require('gulp-file-include'),
-    precss = require('precss');
+    precss = require('precss'),
+    browserslist = require('browserslist');
 
 // Очистка папки DIST
 gulp.task('clean', function () {
@@ -113,7 +114,7 @@ gulp.task('css_compile', function () {
     var processors = [
         precss(),
         cssnano({discardComments: {removeAll: true}}),
-        autoprefixer({browsers: ['> 5%']}),
+        autoprefixer({browsers: ['> 1%', 'last 2 versions', 'ie 10']})
     ];
     return gulp.src('src/css/import.css')
         .pipe(sourcemaps.init())

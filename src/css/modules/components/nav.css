@@ -6,8 +6,10 @@
         display: inline-block;
         vertical-align: top;
         width: 20%;
-
         transition:all 2s;
+
+
+
     }
 
 
@@ -21,18 +23,88 @@
         text-decoration: none;
         width: 90%;
         font-size: 27px;
+        line-height: 34px;
+        font-weight: bold;
         padding: 1em;
         background-color: $blue;
         text-align: center;
         text-transform: uppercase;
         color: #fff;
+        min-height: 122px;
+
+
+        &:after{
+            content: "";
+            position: absolute;
+            width: 80%;
+            height: 0px;
+            background-color: transparent;
+            left: 0;
+            right: 0;
+            top: 101%;
+            margin: auto;
+            z-index: 0;
+            box-shadow: 0 9px 30px 2px rgba(0, 0, 0, 0.9);;
+        }
     }
 }
 
+ .packequip{
+        .techn__side--front{
+            background-image: url("../img/packequip.jpg");
+            background-color: rgba(242, 247, 237, 0.35);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left top;
+        }
+    }
 
+    .packematerial{
+        .techn__side--front{
+            background-image: url("../img/packematerial.jpg");
+            background-color: rgba(242, 247, 237, 0.35);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left top;
+        }
+    }
+
+    .autoequip{
+        .techn__side--front{
+            background-image: url("../img/autoequip.jpg");
+            background-color: rgba(242, 247, 237, 0.35);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left top;        }
+    }
+
+    .technoequip{
+        .techn__side--front{
+            background-image: url("../img/technoequip.jpg");
+            background-color: rgba(242, 247, 237, 0.35);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left top;
+        }
+    }
+
+     .technoserv{
+        .techn__side--front{
+            background-image: url("../img/technoserv.jpg");
+            background-color: rgba(242, 247, 237, 0.35);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left top;
+        }
+    }
 
 .techn {
-    /*временно*/ min-height: 600px;
+    /*временно*/ min-height: 100vh;
     width: 20vw;
     margin: 0 auto;
     transform-style: preserve-3d;
@@ -49,19 +121,44 @@
         width: 20vw;
 
         &--front {
-            background: gold;
             backface-visibility: hidden;
         }
 
         &--right {
+            -ms-transform: translateX(10vw) translateZ(-10vw) rotateY(90deg);
             transform: translateX(10vw) translateZ(-10vw) rotateY(90deg);
-            background: red;
+            background-color: #666666;
+            backface-visibility: hidden;
+            padding-top: 215px;
+            padding-left: 40px;
+            padding-right: 20px;
+
+            ul{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+
+                li{
+                    font-size: 18px;
+                    text-transform: uppercase;
+                    margin-bottom: 25px;
+
+                    a{
+                        text-decoration: none;
+                        color: #fff;
+                        &:hover{
+                            color: #3399ff;
+                        }
+                    }
+                }
+            }
         }
 
     }
 
 
     &:hover{
+        -ms-transform: translateX(-10vw) translateZ(-10vw) rotateY(-90deg) ;
         transform: translateX(-10vw) translateZ(-10vw) rotateY(-90deg) ;
     }
 }
@@ -73,22 +170,24 @@
     transition: transform .9s;
 
     &:hover{
+        -ms-transform: translateX(-10vw) translateZ(-10vw) rotateY(-90deg);
         transform: rotateY(-90deg);
     }
 
 
     &__front{
-        /*Временно*/ min-height: 970px;
+        /*Временно*/ min-height: 100vh;
         position: absolute;
         left: 0;
         top: 0;
         width: 100%;
         background-size: cover;
+        -ms-transform: translateZ(10vw);
         transform: translateZ(10vw);
     }
 
     &__right{
-        /*Временно*/ min-height: 970px;
+        /*Временно*/ min-height: 100vh;
         width: 100%;
         left: 0;
         top: 0;
@@ -96,40 +195,7 @@
         padding-top: 210px;
         padding-left: 55px;
         background-color: #666666;
+        -ms-transform: translateX(10vw) rotateY(90deg);
         transform: translateX(10vw) rotateY(90deg);
-
     }
-
-    &--packequip{
-        .nav-item__front{
-            background-image: url("../img/packequip.jpg");
-        }
-    }
-
-    &--packematerial{
-        .nav-item__front{
-            background-image: url("../img/packematerial.jpg");
-        }
-    }
-
-    &--autoequip{
-        .nav-item__front{
-            background-image: url("../img/autoequip.jpg");
-        }
-    }
-
-    &--technoequip{
-        .nav-item__front{
-            background-image: url("../img/technoequip.jpg");
-        }
-    }
-
-     &--technoserv{
-        .nav-item__front{
-            background-image: url("../img/technoserv.jpg");
-        }
-    }
-
-
-
 }

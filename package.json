@@ -5,6 +5,7 @@
   "main": "gulpfile.js",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
+    "browserslist": "^2.4.0",
     "gulp": "^3.8.11",
     "gulp-clean": "^0.3.1",
     "gulp-connect": "^2.2.0",
@@ -25,5 +26,10 @@
     "precss": "^1.4.0",
     "stylelint": "^5.4.0",
     "wiredep": "^2.2.2"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "ie 10"
+  ]
 }
